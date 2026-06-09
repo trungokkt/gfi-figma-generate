@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import {
   LayoutDashboard, Building2, CreditCard, MessageSquare,
