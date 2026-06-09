@@ -1,35 +1,37 @@
-import { useState } from "react";
-import { Shield, Building2, Smartphone } from "lucide-react";
-import { AdminPortal } from "./components/AdminPortal";
-import { MerchantPortal } from "./components/MerchantPortal";
-import { PlayerPortal } from "./components/PlayerPortal";
+'use client';
 
-type Portal = "admin" | "merchant" | "player";
+import { useState } from 'react';
+import { Shield, Building2, Smartphone } from 'lucide-react';
+import { AdminPortal } from '@/app/components/AdminPortal';
+import { MerchantPortal } from '@/app/components/MerchantPortal';
+import { PlayerPortal } from '@/app/components/PlayerPortal';
+
+type Portal = 'admin' | 'merchant' | 'player';
 
 const portals = [
   {
-    id: "admin" as Portal,
-    label: "Admin Portal",
-    sublabel: "Quản trị hệ thống SaaS",
+    id: 'admin' as Portal,
+    label: 'Admin Portal',
+    sublabel: 'Quản trị hệ thống SaaS',
     icon: Shield,
-    color: "#7C3AED",
-    badge: "Super Admin",
+    color: '#7C3AED',
+    badge: 'Super Admin',
   },
   {
-    id: "merchant" as Portal,
-    label: "Business Portal",
-    sublabel: "Doanh nghiệp / Merchant",
+    id: 'merchant' as Portal,
+    label: 'Business Portal',
+    sublabel: 'Doanh nghiệp / Merchant',
     icon: Building2,
-    color: "#06B6D4",
-    badge: "Vinamilk",
+    color: '#06B6D4',
+    badge: 'Vinamilk',
   },
   {
-    id: "player" as Portal,
-    label: "Player Portal",
-    sublabel: "Người chơi (Mobile-first)",
+    id: 'player' as Portal,
+    label: 'Player Portal',
+    sublabel: 'Người chơi (Mobile-first)',
     icon: Smartphone,
-    color: "#F59E0B",
-    badge: "End User",
+    color: '#F59E0B',
+    badge: 'End User',
   },
 ];
 
@@ -37,20 +39,27 @@ function PortalSelector({ onSelect }: { onSelect: (p: Portal) => void }) {
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center p-8"
-      style={{ background: "linear-gradient(135deg, #0C0E1A 0%, #1a0a2e 50%, #0a1629 100%)", fontFamily: "'Inter', sans-serif" }}
+      style={{
+        background: 'linear-gradient(135deg, #0C0E1A 0%, #1a0a2e 50%, #0a1629 100%)',
+        fontFamily: "'Inter', sans-serif",
+      }}
     >
       {/* Decorative grid */}
       <div
         className="absolute inset-0 opacity-5"
         style={{
-          backgroundImage: "linear-gradient(#7C3AED 1px, transparent 1px), linear-gradient(90deg, #7C3AED 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+          backgroundImage:
+            'linear-gradient(#7C3AED 1px, transparent 1px), linear-gradient(90deg, #7C3AED 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
         }}
       />
 
       <div className="relative z-10 text-center mb-12">
         <div className="flex items-center justify-center gap-3 mb-5">
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #7C3AED, #5B21B6)" }}>
+          <div
+            className="w-12 h-12 rounded-2xl flex items-center justify-center"
+            style={{ background: 'linear-gradient(135deg, #7C3AED, #5B21B6)' }}
+          >
             <span className="text-white text-xl font-bold">G</span>
           </div>
           <div className="text-left">
@@ -73,12 +82,16 @@ function PortalSelector({ onSelect }: { onSelect: (p: Portal) => void }) {
               onClick={() => onSelect(p.id)}
               className="group text-left rounded-2xl border p-6 transition-all hover:scale-[1.02] hover:-translate-y-1"
               style={{
-                background: "rgba(19, 22, 38, 0.8)",
-                borderColor: "rgba(255,255,255,0.08)",
-                backdropFilter: "blur(12px)",
+                background: 'rgba(19, 22, 38, 0.8)',
+                borderColor: 'rgba(255,255,255,0.08)',
+                backdropFilter: 'blur(12px)',
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = `${p.color}50`; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)"; }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = `${p.color}50`;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+              }}
             >
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
@@ -99,7 +112,10 @@ function PortalSelector({ onSelect }: { onSelect: (p: Portal) => void }) {
                 {p.badge}
               </div>
 
-              <div className="mt-4 flex items-center gap-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: p.color }}>
+              <div
+                className="mt-4 flex items-center gap-1 text-xs opacity-0 group-hover:opacity-100 transition-opacity"
+                style={{ color: p.color }}
+              >
                 <span>Vào xem</span>
                 <span>→</span>
               </div>
@@ -109,7 +125,7 @@ function PortalSelector({ onSelect }: { onSelect: (p: Portal) => void }) {
       </div>
 
       <div className="relative z-10 mt-10 flex items-center gap-6 text-xs text-gray-600">
-        {["Admin Portal", "Business Portal", "Player Portal"].map((l, i) => (
+        {['Admin Portal', 'Business Portal', 'Player Portal'].map((l, i) => (
           <span key={l} className="flex items-center gap-2">
             {i > 0 && <span className="w-1 h-1 rounded-full bg-gray-700" />}
             {l}
@@ -120,7 +136,7 @@ function PortalSelector({ onSelect }: { onSelect: (p: Portal) => void }) {
   );
 }
 
-export default function App() {
+export default function Home() {
   const [activePortal, setActivePortal] = useState<Portal | null>(null);
 
   if (!activePortal) {
@@ -132,7 +148,7 @@ export default function App() {
       {/* Portal switcher bar */}
       <div
         className="flex items-center gap-2 px-4 py-2 border-b flex-shrink-0"
-        style={{ background: "#0A0C17", borderColor: "rgba(255,255,255,0.06)" }}
+        style={{ background: '#0A0C17', borderColor: 'rgba(255,255,255,0.06)' }}
       >
         <button
           onClick={() => setActivePortal(null)}
@@ -153,9 +169,9 @@ export default function App() {
                 onClick={() => setActivePortal(p.id)}
                 className="flex items-center gap-1.5 px-3 py-1 rounded-md text-xs transition-all"
                 style={{
-                  background: isActive ? `${p.color}20` : "transparent",
-                  color: isActive ? p.color : "#4B5563",
-                  border: isActive ? `1px solid ${p.color}30` : "1px solid transparent",
+                  background: isActive ? `${p.color}20` : 'transparent',
+                  color: isActive ? p.color : '#4B5563',
+                  border: isActive ? `1px solid ${p.color}30` : '1px solid transparent',
                 }}
               >
                 <Icon size={11} />
@@ -168,9 +184,9 @@ export default function App() {
 
       {/* Portal content */}
       <div className="flex-1 overflow-hidden">
-        {activePortal === "admin" && <AdminPortal />}
-        {activePortal === "merchant" && <MerchantPortal />}
-        {activePortal === "player" && <PlayerPortal />}
+        {activePortal === 'admin' && <AdminPortal />}
+        {activePortal === 'merchant' && <MerchantPortal />}
+        {activePortal === 'player' && <PlayerPortal />}
       </div>
     </div>
   );
